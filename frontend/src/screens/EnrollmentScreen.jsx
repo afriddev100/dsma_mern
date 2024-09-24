@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect ,CSSProperties} from 'react';
-import ClipLoader from "react-spinners/ClipLoader";
+
 
 
 export default function EnrollmentScreen() {
@@ -20,7 +20,7 @@ export default function EnrollmentScreen() {
             enrollData.contanctNo = document.getElementById('contanctNo').value;
             enrollData.address = document.getElementById('inputAddress').value;
 
-            const response = await fetch('http://localhost:5000/enroll',
+            const response = await fetch('http://localhost:5100/enroll',
                 {
                     method: 'POST',
                     headers: {

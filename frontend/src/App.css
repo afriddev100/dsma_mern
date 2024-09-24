@@ -42,3 +42,12 @@ body, html {
   z-index: 100;
   transform: translate(-50%,-50%);
 }
+
+
+.three-line-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
