@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 // import trainingPackages from '../trainingPackages';
 import TrainingPackage from "../components/TrainingPackage";
 import axios from "axios";
@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 
 function TrainingPackageList() {
+
   const [trainingPackages, setTrainingPackages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
@@ -26,7 +27,8 @@ function TrainingPackageList() {
 
   return (
     <>
-      <h1 className="mt-2">Training Packages</h1>
+    <Container fluid>
+    <h1 className="mt-2">Training Packages</h1>
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -42,6 +44,8 @@ function TrainingPackageList() {
           ))}
         </Row>
       )}
+    </Container>
+   
     </>
   );
 }

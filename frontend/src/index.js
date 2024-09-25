@@ -23,6 +23,7 @@ import EnrollmentEditList from "./screens/admin/EnrollmentEditList";
 import PaymentList from "./screens/admin/PaymentList";
 import SystemSettings from "./screens/admin/SystemSettings";
 import Dashboard from "./screens/admin/Dashboard";
+import EnrollmentStatusScreen from "./screens/EnrollmentStatusScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -33,6 +34,12 @@ const router = createBrowserRouter(
         path="/enroll"
         element={<EnrollmentScreen></EnrollmentScreen>}
       />
+      <Route
+        index={true}
+        path="/enroll/status"
+        element={<EnrollmentStatusScreen></EnrollmentStatusScreen>}
+      />
+
       <Route index={true} path="/login" element={<LoginScreen></LoginScreen>} />
       <Route
         index={true}
@@ -50,6 +57,7 @@ const router = createBrowserRouter(
       <Route path="" element={<AdminRoute />}>
       <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/packagelist" element={<TrainingPackagesEditList />} />
+        <Route path="/admin/editPackage" element={<EditTrainingPackage />} />
         <Route path="/admin/editPackage/:id" element={<EditTrainingPackage />} />
         <Route path="/admin/enrolllist" element={<EnrollmentEditList />} />
         <Route path="/admin/enroll/:id" element={<EditEnrollment />} />

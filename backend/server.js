@@ -5,13 +5,17 @@ dotenv.config();
 import express from 'express';
 import connectDB from './config/db.js';
 import  cors from 'cors';
-import bodyParser from  'body-parser';
-import trainingPackageRoutes from './routes/trainingPackageRoutes.js';
-import uploadRoutes from './routes/uploadRoutes.js';
+import cookieParser from 'cookie-parser';
+import trainingPackageRouter from './routes/trainingPackageRouter.js';
+import uploadRouter from './routes/uploadRouter.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-import userRoutes from './routes/userRoutes.js';
+import userRouter from './routes/userRouter.js';
+import enrollmentRouter from './routes/enrollmentRouter.js';
+import paymentRouter from './routes/paymentRouter.js';
+
+
 const __fileName=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__fileName);
 
@@ -20,7 +24,9 @@ const port=process.env.PORT;
 connectDB();
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 
@@ -32,13 +38,20 @@ app.get('/', (req,res)=>{
 
 
 // Routes to Training Packages
-app.use('/api/trainingPackages', trainingPackageRoutes);
+app.use('/api/trainingPackages', trainingPackageRouter);
 
 
-app.use('/api/users', userRoutes);
+//Routes to enrollments
+app.use('/api/enrollments', enrollmentRouter);
+
+
+//Routes to enrollments
+app.use('/api/payments', paymentRouter);
+
+app.use('/api/users', userRouter);
 
 //Image upload API
-app.use('/api/upload', uploadRoutes);
+app.use('/api/upload', uploadRouter);
 
 
 // Serve static files from the "images" folder

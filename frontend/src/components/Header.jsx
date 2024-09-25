@@ -33,6 +33,10 @@ export default function Header() {
               <LinkContainer to="/enroll">
                 <Nav.Link>Enrollment</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/enroll/status">
+                <Nav.Link>Status</Nav.Link>
+              </LinkContainer>
+
               <LinkContainer to="/aboutus">
                 <Nav.Link>About us</Nav.Link>
               </LinkContainer>
@@ -68,12 +72,14 @@ export default function Header() {
                   <LinkContainer to="/admin/packagelist">
                     <NavDropdown.Item>Training Package List</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to="/admin/enrolllist">
+                    <NavDropdown.Item>Enrollments</NavDropdown.Item>
+                  </LinkContainer>
+
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="/admin/enrollList">
-                    <NavDropdown.Item></NavDropdown.Item>
-                  </LinkContainer>
+                
         
                 </NavDropdown>
               )

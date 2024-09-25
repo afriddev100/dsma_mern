@@ -37,6 +37,10 @@ const enrollmentSchema= new mongoose.Schema({
         type:String,
         required:true
     },
+    address:{
+        type:String,
+        required:true
+    },
     trainingPackage:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
@@ -53,6 +57,12 @@ const enrollmentSchema= new mongoose.Schema({
     status:{
        type:String,
        required:false 
+    },
+    balance:{
+        type:Number,
+        required:true,
+        unique: true
+
     }
 
 },{timestamps:true

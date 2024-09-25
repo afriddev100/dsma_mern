@@ -5,6 +5,7 @@ import {FaEdit, FaTrash} from 'react-icons/fa'
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { LinkContainer } from 'react-router-bootstrap';
+import { toast } from 'react-toastify';
 
 function TrainingPackagesEditList() {
   const [trainingPackages, setTrainingPackages] = useState([]);
@@ -24,8 +25,16 @@ function TrainingPackagesEditList() {
     fetchPorducts();
   }, []);
 
-  const deleteHandler=(id)=>{
-    console.log(`DELETE PRESSED for ${id}`);
+  const deleteHandler= async (id)=>{
+   try{
+    const {deleteData}=await axios.delete(`/api/trainingPackages/${id}`);
+    toast.success("Deleted Succesfully");
+    const { data } = await axios.get("/api/trainingPackages");
+    setTrainingPackages(data);
+
+   }catch(err){
+    toast.error(err?.data?.message || err.error);
+   }
 
   }
 
@@ -37,9 +46,12 @@ function TrainingPackagesEditList() {
       <h1>Training Packages</h1>
     </Col>
     <Col className="text-end">
+    <LinkContainer to="/admin/editPackage">
     <Button className='btn-sm m-3'>
       <FaEdit/> Create Training Package
     </Button>
+    </LinkContainer>
+   
     </Col>
     </Row>
       {isLoading ? <Loader /> : error ? <Message variant='danger'>{error.data.message}</Message> 
@@ -66,7 +78,7 @@ function TrainingPackagesEditList() {
                   <td>{trainingPackage.duration}</td>
                   <td>{trainingPackage.status}</td>
                   <td>
-                    <LinkContainer to={`/admin/trainingpackage/${trainingPackage._id}`}>
+                    <LinkContainer to={`/admin/editPackage/${trainingPackage._id}`}>
                       <Button variant='light' className='btn-sm mx-2'> 
                         <FaEdit />
                       </Button>

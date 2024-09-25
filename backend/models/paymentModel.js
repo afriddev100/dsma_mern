@@ -15,19 +15,19 @@ const paymentSchema= new mongoose.Schema({
     remarks:{
         type:String,
         required:true,
-        unique: true
+      
 
     },
     paidAmount:{
         type:Number,
         required:true,
-        unique: true
+      
 
     },
     balance:{
         type:Number,
         required:true,
-        unique: true
+        
 
     },
 
