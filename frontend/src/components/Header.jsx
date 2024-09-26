@@ -1,49 +1,117 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import useAuthStore from "../store/authStore";
+import { FaUser } from "react-icons/fa";
 
 export default function Header() {
+  const { username, isAuthenticated,isAdmin ,logout } = useAuthStore();
+
+  const logoutHandler = () => {
+    logout();
+  };
   return (
-   <>
-   
-   
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <Link class="navbar-brand" to="/">
-                    <img src="dsllogo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top" />
-                    
-                  </Link>
-              
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <Link class="nav-link active" aria-current="page" href="#">Home</Link>
+    <>
+      <Navbar bg="body-tertiary" variant="light" expand="lg" collapseOnSelect>
+        <Container fluid='xxl'>
+          <LinkContainer to="/">
+            <Navbar.Brand>
+              <img src="dsllogo.png" width="60" height="60" alt="Logo" />
+            </Navbar.Brand>
+          </LinkContainer>
+
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+              <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/packageList">
+                <Nav.Link>Our Packages</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/enroll">
+                <Nav.Link>Enrollment</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/enroll/status">
+                <Nav.Link>Status</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/aboutus">
+                <Nav.Link>About us</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          
+            <Nav className="ms-auto ">
+            {isAuthenticated ? (
+                <>
+                  <NavDropdown title={username} id='username'>
+                    <LinkContainer to='/profile'>
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+              ) : (
+                <LinkContainer to='/login'>
+                  <Nav.Link>
+                    <FaUser /> Sign In
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+
+            {
+              isAdmin && (
+
+                <NavDropdown title="Admin" id="adminmenu">
+                <LinkContainer to="/admin/dashboard">
+                    <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/packagelist">
+                    <NavDropdown.Item>Training Package List</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/enrolllist">
+                    <NavDropdown.Item>Enrollments</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to="/admin/userlist">
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                
+        
+                </NavDropdown>
+              )
+
+            }
+            </Nav>
+          </Navbar.Collapse>
+
+          {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" href="#">Home</Link>
                   </li>
-                  <li class="nav-item">
-                    <Link class="nav-link" href="#">Our Packages</Link>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/packageList">Our Packages</Link>
                   </li>
 
 
-                  <li class="nav-item">
-                    <Link class="nav-link" to="/enroll">Enrollment</Link>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/enroll">Enrollment</Link>
                   </li>
-                  <li class="nav-item">
-                    <Link class="nav-link" href="#">About Us</Link>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/aboutus">About Us</Link>
                   </li>
                 </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                  <button class="btn btn-outline-success" type="submit">Search</button>
+                <form className="d-flex" role="search">
+                  <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                  <button className="btn btn-outline-success" type="submit">Search</button>
                 </form>
-              </div>
-            </div>
-
-          
-
-        
-          </nav>
-   </>
-  )
+              </div> */}
+        </Container>
+      </Navbar>
+    </>
+  );
 }
