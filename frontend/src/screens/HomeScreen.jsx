@@ -4,6 +4,7 @@ import { Container, Card, Button } from 'react-bootstrap';
 import TrainingPackage from '../components/TrainingPackage';
 import ProductCarousel from "../components/ProductCarousel";
 import axios from "axios";
+import FormContainer from "../components/FormContainer";
 
 export default function HomeScreen() {
   const [trainingPackages,setTrainingPackages]=useState([]);
@@ -91,7 +92,10 @@ export default function HomeScreen() {
           <Card.Text>
             At [Driving School Name], we are dedicated to shaping confident and skilled drivers for a safer tomorrow. Our comprehensive training packages cater to all levels, whether you’re just starting out or looking to enhance your driving skills. With experienced instructors, modern vehicles, and a commitment to excellence, we provide personalized learning experiences that make driving enjoyable and stress-free.
           </Card.Text>
+          <FormContainer size={6}> 
           <ProductCarousel products={trainingPackages} />
+          </FormContainer>
+  
           <Button variant="primary" href="/packages">Explore Our Packages</Button>
         </Card.Body>
       </Card>

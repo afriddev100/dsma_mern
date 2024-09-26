@@ -125,7 +125,6 @@ const deleteEnrollment = asyncHandler(async (req, res) => {
 // @route   GET /api/enrollments/status
 // @access  Public
 const checkEnrollmentStatus = asyncHandler(async (req, res) => {
-    console.log(req.params)
   const identifier  = req.params.identifier;
 
   if (!identifier) {

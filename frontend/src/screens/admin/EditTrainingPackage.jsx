@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import FormContainer from '../../components/FormContainer';
@@ -109,7 +109,8 @@ function EditTrainingPackage() {
 
   return (
     <>
-        <Link to='/admin/packagelist' className='btn btn-light my-3'>
+    <Container>
+    <Link to='/admin/packagelist' className='btn btn-light my-3'>
         Go Back
       </Link>
       <FormContainer size={6}>
@@ -193,6 +194,8 @@ function EditTrainingPackage() {
           </Form>
         )}
       </FormContainer>
+    </Container>
+       
     </>
   )
 }

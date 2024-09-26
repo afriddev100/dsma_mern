@@ -132,6 +132,8 @@ const EditEnrollment = () => {
       ],
     });
     
+
+    doc.text("Payment History", 15, 128);
     // Add Payment History
     const paymentData = payments.map(payment => [
       new Date(payment.createdAt).toLocaleString(),
@@ -154,10 +156,11 @@ const EditEnrollment = () => {
 
   return (
     <div className="container mt-4">
-      <h1>Enrollee's Details</h1>
+      {/* <h1>Enrollee's Details</h1> */}
       <Card className="mt-3">
         <Card.Body>
           <Card.Title>Enrollee's Details</Card.Title>
+          <hr />
           <Row className="mb-3">
             <Col md={6}>
               <strong>First Name:</strong> {enrollment.firstName}
