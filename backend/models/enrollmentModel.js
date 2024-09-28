@@ -60,8 +60,7 @@ const enrollmentSchema= new mongoose.Schema({
     },
     balance:{
         type:Number,
-        required:true,
-        unique: true
+        required:true
 
     }
 

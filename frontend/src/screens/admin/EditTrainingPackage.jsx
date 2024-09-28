@@ -19,6 +19,7 @@ function EditTrainingPackage() {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
   const [duration, setDuration] = useState('');
+  const [videoUrl,setVideoUrl]=useState('');
   const [description, setDescription] = useState('');
 
   useEffect(()=>{
@@ -32,6 +33,7 @@ function EditTrainingPackage() {
             setImage(data.image);
             setDuration(data.duration);
             setDescription(data.description);
+            setVideoUrl(data.videoUrl);
             setIsEdit(true);
             setIsLoading(false);
           }
@@ -73,7 +75,8 @@ function EditTrainingPackage() {
             price:price,
             image:image,
             duration:duration,
-            description:description
+            description:description,
+            videoUrl:videoUrl
 
           }
         )
@@ -86,7 +89,8 @@ function EditTrainingPackage() {
             price:price,
             image:image,
             duration:duration,
-            description:description
+            description:description,
+            videoUrl:videoUrl
 
           })
           toast.success('Training package added');
@@ -161,6 +165,17 @@ function EditTrainingPackage() {
               {isLoadingUpload && <Loader />}
             </Form.Group>
 
+
+ 
+            <Form.Group controlId='videoUrl'>
+              <Form.Label>Video Link</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Enter video link'
+                value={videoUrl}
+                onChange={(e) => setVideoUrl(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
             <Form.Group controlId='countInStock'>
               <Form.Label>Duration in No of Days</Form.Label>

@@ -37,6 +37,15 @@ export default function Header() {
                 <Nav.Link>Status</Nav.Link>
               </LinkContainer>
 
+              <LinkContainer to="/mocktest">
+                <Nav.Link>Mock Test</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/resource">
+                <Nav.Link>Resources</Nav.Link>
+              </LinkContainer>
+
+
               <LinkContainer to="/aboutus">
                 <Nav.Link>About us</Nav.Link>
               </LinkContainer>
@@ -75,6 +84,19 @@ export default function Header() {
                   <LinkContainer to="/admin/enrolllist">
                     <NavDropdown.Item>Enrollments</NavDropdown.Item>
                   </LinkContainer>
+
+                  
+
+                  <LinkContainer to="/admin/questioneditlist">
+                    <NavDropdown.Item>Mock Test Question</NavDropdown.Item>
+                  </LinkContainer>
+
+
+
+                  <LinkContainer to="/admin/resourceeditlist">
+                    <NavDropdown.Item>Resources List</NavDropdown.Item>
+                  </LinkContainer>
+
 
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>

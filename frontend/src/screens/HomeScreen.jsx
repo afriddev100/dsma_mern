@@ -92,7 +92,7 @@ export default function HomeScreen() {
           <Card.Text>
             At [Driving School Name], we are dedicated to shaping confident and skilled drivers for a safer tomorrow. Our comprehensive training packages cater to all levels, whether you’re just starting out or looking to enhance your driving skills. With experienced instructors, modern vehicles, and a commitment to excellence, we provide personalized learning experiences that make driving enjoyable and stress-free.
           </Card.Text>
-          <FormContainer size={6}> 
+          <FormContainer size={8}> 
           <ProductCarousel products={trainingPackages} />
           </FormContainer>
   

@@ -37,6 +37,11 @@ const trainingPackageSchema= new mongoose.Schema({
     image:{
         type:String,
         required:false
+    },
+    videoUrl:{
+        type:String,
+        required:false
+
     }
 
 },{timestamps:true

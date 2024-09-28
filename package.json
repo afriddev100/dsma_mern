@@ -10,7 +10,8 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\"  \"npm run client\"",
     "data:import": "node backend/seeder.js",
-    "data:destroy": "node backend/seeder.js -d"
+    "data:destroy": "node backend/seeder.js -d",
+    "data:importQ": "node backend/seederQuest.js"
   },
   "author": "",
   "license": "MIT",
@@ -22,6 +23,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
     "mongoose": "^8.6.3",
     "multer": "^1.4.5-lts.1",
     "sharp": "^0.33.5"
