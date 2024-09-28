@@ -30,7 +30,7 @@ const getPackageById = asyncHandler(async (req, res) => {
 });
 
 const saveTrainingPackage = asyncHandler(async (req, res) => {
-  const { name, price, description, image, duration } = req.body;
+  const { name, price, description, image, duration,videoUrl } = req.body;
   const trainingPackage = new TrainingPackage({
     name: name,
     price: price,
@@ -38,13 +38,14 @@ const saveTrainingPackage = asyncHandler(async (req, res) => {
     description: description,
     image: image,
     duration: duration,
+    videoUrl:videoUrl
   });
   const createdPackage = await trainingPackage.save();
   res.status(201).json(trainingPackage);
 });
 
 const updateTrainingPackage = asyncHandler(async (req, res) => {
-  const { name, price, description, image, duration } = req.body;
+  const { name, price, description, image, duration ,videoUrl} = req.body;
   const trainingPackage = await TrainingPackage.findById(req.params.id);
   if (trainingPackage) {
     trainingPackage.name=name;
@@ -53,6 +54,7 @@ const updateTrainingPackage = asyncHandler(async (req, res) => {
     trainingPackage.description=description;
     trainingPackage.image=image;
     trainingPackage.duration=duration;
+    trainingPackage.videoUrl=videoUrl;
     const upadatedPackage = await trainingPackage.save();
     res.status(201).json(upadatedPackage);
   } else {

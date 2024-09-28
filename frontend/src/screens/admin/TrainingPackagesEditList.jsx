@@ -64,7 +64,6 @@ function TrainingPackagesEditList() {
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>DURATION</th>
-                <th>STATUS</th>
                 <th>ACTION</th>
                
               </tr>
@@ -76,7 +75,6 @@ function TrainingPackagesEditList() {
                   <td>{trainingPackage.name}</td>
                   <td>{trainingPackage.price}</td>
                   <td>{trainingPackage.duration}</td>
-                  <td>{trainingPackage.status}</td>
                   <td>
                     <LinkContainer to={`/admin/editPackage/${trainingPackage._id}`}>
                       <Button variant='light' className='btn-sm mx-2'> 
