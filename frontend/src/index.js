@@ -30,6 +30,8 @@ import EditQuestion from "./screens/admin/EditQuestion";
 import ResourceEditList from './screens/admin/ResourceEditList';
 import EditResource from './screens/admin/EditResource';
 import ResourcesPage from "./screens/ResourcePage";
+import NotificationList from "./screens/admin/NotificationList";
+import NotificationForm from "./screens/admin/NotificationForm";
 
 
 const router = createBrowserRouter(
@@ -81,6 +83,9 @@ const router = createBrowserRouter(
         <Route path="/admin/resourceedit" element={<EditResource />} />
         <Route path="/admin/resourceedit/:id" element={<EditResource />} />
         <Route path="/admin/resourceeditlist" element={<ResourceEditList />} />
+        <Route path="/admin/notifications" element={<NotificationList />} />
+        <Route path="/admin/notificationCreate" element={<NotificationForm />} />
+        <Route path="/admin/notificationCreate/:id" element={<NotificationForm />} />
       </Route>
     </Route>
   ])

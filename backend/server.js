@@ -18,6 +18,7 @@ import dashboardRouter from './routes/dashboardRouter.js';
 import questionRouter from './routes/questionRouter.js';
 import resourceRouter from './routes/resourceRouter.js';
 import fileUploadRouter from './routes/uploadFileRouter.js';
+import notificationRouter from './routes/notificationRouter.js';
 
 const __fileName=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__fileName);
@@ -66,6 +67,9 @@ app.use('/api/questions', questionRouter);
 //Image upload API
 app.use('/api/resources', resourceRouter);
 
+
+//Image upload API
+app.use('/api/notifications', notificationRouter);
 
 //Image upload API
 app.use('/api/dashboard', dashboardRouter);
