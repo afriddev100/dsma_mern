@@ -1,3 +1,4 @@
+import axios from "axios";
 import { create } from "zustand";
 
 const useAuthStore = create((set) => ({
@@ -6,6 +7,10 @@ const useAuthStore = create((set) => ({
   email: localStorage.getItem("email") || null,
   isAdmin: localStorage.getItem("isAdmin") || null,
   isAuthenticated: !!localStorage.getItem("user_id"),
+
+  // Company details
+  companyName: null,
+  companyLogo: null,
 
   // Action to log in
   login: (user_id, username, email, isAdmin) => {
@@ -38,9 +43,23 @@ const useAuthStore = create((set) => ({
       user_id: null,
       username: null,
       email: null,
-      isAdmin:null,
+      isAdmin: null,
       isAuthenticated: false,
     });
+  },
+
+  // Action to load company data
+  loadCompanyData: async () => {
+    try {
+      console.log("loading system component")
+      const { data } = await axios.get("/api/systemSetting");
+      set({
+        companyName: data.name,
+        companyLogo: data.logoUrl,
+      });
+    } catch (error) {
+      console.error("Failed to load company data:", error);
+    }
   },
 }));
 

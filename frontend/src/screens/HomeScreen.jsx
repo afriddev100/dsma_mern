@@ -5,8 +5,12 @@ import TrainingPackage from '../components/TrainingPackage';
 import ProductCarousel from "../components/ProductCarousel";
 import axios from "axios";
 import FormContainer from "../components/FormContainer";
+import useAuthStore from "../store/authStore";
+import { LinkContainer } from "react-router-bootstrap";
 
 export default function HomeScreen() {
+  const { companyName } = useAuthStore()
+
   const [trainingPackages,setTrainingPackages]=useState([]);
   const  [isLoading,setIsLoading]=useState(true);
   const  [error,setError]=useState();
@@ -88,15 +92,17 @@ export default function HomeScreen() {
       <Card className="text-center">
       
         <Card.Body>
-          <Card.Title>Welcome to [Driving School Name]!</Card.Title>
+          <Card.Title>Welcome to {companyName || "Driving School App"}</Card.Title>
           <Card.Text>
             At [Driving School Name], we are dedicated to shaping confident and skilled drivers for a safer tomorrow. Our comprehensive training packages cater to all levels, whether you’re just starting out or looking to enhance your driving skills. With experienced instructors, modern vehicles, and a commitment to excellence, we provide personalized learning experiences that make driving enjoyable and stress-free.
           </Card.Text>
           <FormContainer size={8}> 
           <ProductCarousel products={trainingPackages} />
           </FormContainer>
-  
-          <Button variant="primary" href="/packages">Explore Our Packages</Button>
+          <LinkContainer  to="/packageList"> 
+          <Button  variant="primary">Explore Our Packages</Button>
+          </LinkContainer>
+       
         </Card.Body>
       </Card>
     </Container>
