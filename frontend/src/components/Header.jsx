@@ -28,7 +28,7 @@ export default function Header() {
     fetchNotifications();
 
     // Poll every 30 seconds
-    const interval = setInterval(fetchNotifications, 30000);
+    const interval = setInterval(fetchNotifications, 10000);
 
     // Clear interval on unmount
     return () => clearInterval(interval);
@@ -61,7 +61,7 @@ export default function Header() {
               <LinkContainer to="/enroll">
                 <Nav.Link>Enrollment</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/enroll/status">
+              <LinkContainer to="/enrollstatus">
                 <Nav.Link>Status</Nav.Link>
               </LinkContainer>
 
@@ -133,7 +133,7 @@ export default function Header() {
 
                 
 
-                <NavDropdown title="Admin" id="adminmenu" align="end"> 
+                <NavDropdown title="Admin Screens" id="adminmenu" align="end"> 
                 <LinkContainer to="/admin/dashboard">
                     <NavDropdown.Item>Dashboard</NavDropdown.Item>
                   </LinkContainer>
@@ -160,12 +160,12 @@ export default function Header() {
                   <LinkContainer to="/admin/notifications">
                     <NavDropdown.Item>Notifications</NavDropdown.Item>
                   </LinkContainer>
-
+{/* 
 
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
-                
+                 */}
         
                 </NavDropdown>
               )

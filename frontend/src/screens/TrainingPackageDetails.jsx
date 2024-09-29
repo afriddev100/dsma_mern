@@ -39,7 +39,7 @@ function TrainingPackageDetails() {
   return (
     <>
       <Container>
-        <Link className="btn btn-light my-3" to="/">
+        <Link className="btn btn-light my-3" to="/packageDetails">
           Go Back
         </Link>
         {isLoading ? (
@@ -97,7 +97,7 @@ function TrainingPackageDetails() {
                     </ListGroup.Item>
 
                     <ListGroup.Item>
-                      <Link className="nav-link" to="/packageList">
+                      <Link className="nav-link" to={`/enroll/${trainingPackge._id}`}>
                         <Button className="btn-block" type="button">
                           Enroll
                         </Button>

@@ -43,9 +43,14 @@ const router = createBrowserRouter(
         path="/enroll"
         element={<EnrollmentScreen></EnrollmentScreen>}
       />
+           <Route
+        index={true}
+        path="/enroll/:packageId"
+        element={<EnrollmentScreen></EnrollmentScreen>}
+      />
       <Route
         index={true}
-        path="/enroll/status"
+        path="/enrollstatus"
         element={<EnrollmentStatusScreen></EnrollmentStatusScreen>}
       />
 
