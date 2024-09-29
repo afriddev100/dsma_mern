@@ -112,9 +112,9 @@ export default function Header() {
             {isAuthenticated ? (
                 <>
                   <NavDropdown title={username} id='username' align="end">
-                    <LinkContainer to='/profile'>
+                    {/* <LinkContainer to='/profile'>
                       <NavDropdown.Item>Profile</NavDropdown.Item>
-                    </LinkContainer>
+                    </LinkContainer> */}
                     <NavDropdown.Item onClick={logoutHandler}>
                       Logout
                     </NavDropdown.Item>
