@@ -18,9 +18,15 @@ export default function HomeScreen() {
     
       const fetchPorducts=async ()=>{
         try{
+          if (companyName) {
+            document.title = companyName;
+          } else {
+            document.title = "Driving School App";  // Fallback title
+          }
           const {data}= await axios.get("/api/trainingPackages/latest");
           setTrainingPackages(data);
           setIsLoading(false);
+          
         }
         catch(error){
           setIsLoading(false);
@@ -38,7 +44,7 @@ export default function HomeScreen() {
       <div className="background-container">
         <div className="overlay"></div>
         <div className="content">
-          <h1>Welcome to Driving School App</h1>
+          <h1>Welcome to {companyName || "Driving School App"}</h1>
           <p>
             <Link className="nav-link active" aria-current="page" to="/enroll">
               <button type="button" className="btn btn-light enrollbutton">
