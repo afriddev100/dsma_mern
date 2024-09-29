@@ -9,10 +9,10 @@ import FormContainer from "../components/FormContainer";
 
 export default function EnrollmentScreen() {
   const [isLoading, setIsLoading] = useState(false);
-  const { id: packageId } = useParams();
   const navigate = useNavigate();
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState();
+  const { packageId } = useParams();
 
   // Form values
   const [firstName, setFirstName] = useState("");

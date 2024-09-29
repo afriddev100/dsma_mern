@@ -1,11 +1,39 @@
-import { useState } from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Badge, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import useAuthStore from "../store/authStore";
-import { FaUser } from "react-icons/fa";
+import { FaBell, FaUser } from "react-icons/fa";
+import axios from "axios";
 
 export default function Header() {
   const { username, isAuthenticated,isAdmin ,logout } = useAuthStore();
+  const [notifications, setNotifications] = useState([]);
+  const [notificationCount, setNotificationCount] = useState(0);
+
+   // Polling function to fetch notifications every 30 seconds
+   useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        // Replace with your API endpoint for fetching notifications
+        const {data} = await axios.get("/api/notifications/notify");
+  
+        setNotifications(data);
+        setNotificationCount(data.length);
+      } catch (error) {
+        console.error("Error fetching notifications:", error);
+      }
+    };
+
+    // Fetch notifications immediately on mount
+    fetchNotifications();
+
+    // Poll every 30 seconds
+    const interval = setInterval(fetchNotifications, 10000);
+
+    // Clear interval on unmount
+    return () => clearInterval(interval);
+  }, []);
+
 
   const logoutHandler = () => {
     logout();
@@ -33,7 +61,7 @@ export default function Header() {
               <LinkContainer to="/enroll">
                 <Nav.Link>Enrollment</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/enroll/status">
+              <LinkContainer to="/enrollstatus">
                 <Nav.Link>Status</Nav.Link>
               </LinkContainer>
 
@@ -52,9 +80,38 @@ export default function Header() {
             </Nav>
           
             <Nav className="ms-auto ">
+
+            {/* Notifications Dropdown */}
+            <NavDropdown align="end"
+                    title={
+                      <>
+                      {/* Bell icon with animation */}
+                      <div className={`notification-icon ${notificationCount > 0 ? 'animate-bell' : ''}`}>
+                        <FaBell />{" "}
+                        {notificationCount > 0 && (
+                          <Badge bg="danger">{notificationCount}</Badge>
+                        )}
+                      </div>
+                    </>
+                    }
+                    id="notifications-dropdown"
+                  >
+                    {notifications.length > 0 ? (
+                      notifications.map((notification, index) => (
+                        <NavDropdown.Item key={index}>
+                          {notification.message} 
+                        </NavDropdown.Item>
+                      ))
+                    ) : (
+                      <NavDropdown.Item>No Notifications</NavDropdown.Item>
+                    )}
+                  </NavDropdown>
+
+
+
             {isAuthenticated ? (
                 <>
-                  <NavDropdown title={username} id='username'>
+                  <NavDropdown title={username} id='username' align="end">
                     <LinkContainer to='/profile'>
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
@@ -74,7 +131,9 @@ export default function Header() {
             {
               isAdmin && (
 
-                <NavDropdown title="Admin" id="adminmenu">
+                
+
+                <NavDropdown title="Admin Screens" id="adminmenu" align="end"> 
                 <LinkContainer to="/admin/dashboard">
                     <NavDropdown.Item>Dashboard</NavDropdown.Item>
                   </LinkContainer>
@@ -98,10 +157,15 @@ export default function Header() {
                   </LinkContainer>
 
 
+                  <LinkContainer to="/admin/notifications">
+                    <NavDropdown.Item>Notifications</NavDropdown.Item>
+                  </LinkContainer>
+{/* 
+
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
-                
+                 */}
         
                 </NavDropdown>
               )
