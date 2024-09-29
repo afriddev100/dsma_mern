@@ -21,7 +21,7 @@ import EditTrainingPackage from "./screens/admin/EditTrainingPackage";
 import EditEnrollment from "./screens/admin/EditEnrollment";
 import EnrollmentEditList from "./screens/admin/EnrollmentEditList";
 import PaymentList from "./screens/admin/PaymentList";
-import SystemSettings from "./screens/admin/SystemSettings";
+import SystemSetting from "./screens/admin/SystemSetting";
 import Dashboard from "./screens/admin/Dashboard";
 import EnrollmentStatusScreen from "./screens/EnrollmentStatusScreen";
 import MockTestScreen from "./screens/MockTestScreen";
@@ -81,7 +81,6 @@ const router = createBrowserRouter(
         <Route path="/admin/enrolllist" element={<EnrollmentEditList />} />
         <Route path="/admin/enroll/:id" element={<EditEnrollment />} />
         <Route path="/admin/paymentlist" element={<PaymentList />} />
-        <Route path="/admin/systemsettings" element={<SystemSettings />} />
         <Route path="/admin/questioneditlist" element={<QuestionsEditList />} />
         <Route path="/admin/questionedit" element={<EditQuestion />} />
         <Route path="/admin/questionedit/:id" element={<EditQuestion />} />
@@ -91,6 +90,7 @@ const router = createBrowserRouter(
         <Route path="/admin/notifications" element={<NotificationList />} />
         <Route path="/admin/notificationCreate" element={<NotificationForm />} />
         <Route path="/admin/notificationCreate/:id" element={<NotificationForm />} />
+        <Route path="/admin/systemSetting" element={<SystemSetting  />} />
       </Route>
     </Route>
   ])

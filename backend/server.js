@@ -20,6 +20,8 @@ import resourceRouter from './routes/resourceRouter.js';
 import fileUploadRouter from './routes/uploadFileRouter.js';
 import notificationRouter from './routes/notificationRouter.js';
 
+import systemSettingRouter from './routes/systemSettingRouter.js';
+
 const __fileName=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__fileName);
 
@@ -68,11 +70,18 @@ app.use('/api/questions', questionRouter);
 app.use('/api/resources', resourceRouter);
 
 
+
+//System setting upload API
+app.use('/api/systemSetting', systemSettingRouter);
+
+
 //Image upload API
 app.use('/api/notifications', notificationRouter);
 
 //Image upload API
 app.use('/api/dashboard', dashboardRouter);
+
+
 
 
 // Serve static files from the "images" folder

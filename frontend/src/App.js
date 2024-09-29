@@ -11,8 +11,21 @@ import Footer from "./components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Container } from "react-bootstrap";
+import useAuthStore from "./store/authStore";
+import { useEffect } from "react";
 
 function App() {
+  const loadCompanyData = useAuthStore((state) => state.loadCompanyData);
+
+  useEffect(() => {
+    // Load company data on app start
+    console.log("inside app ")
+    loadCompanyData();
+  });
+
+
+
+
   return (
     <>
       <ToastContainer />

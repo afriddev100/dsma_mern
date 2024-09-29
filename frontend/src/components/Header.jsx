@@ -6,7 +6,7 @@ import { FaBell, FaUser } from "react-icons/fa";
 import axios from "axios";
 
 export default function Header() {
-  const { username, isAuthenticated,isAdmin ,logout } = useAuthStore();
+  const { username, isAuthenticated,isAdmin ,logout,companyName,companyLogo } = useAuthStore();
   const [notifications, setNotifications] = useState([]);
   const [notificationCount, setNotificationCount] = useState(0);
 
@@ -44,7 +44,7 @@ export default function Header() {
         <Container fluid='xxl'>
           <LinkContainer to="/">
             <Navbar.Brand>
-              <img src="dsllogo.png" width="60" height="60" alt="Logo" />
+              <img src={companyLogo} alt="Logo" width="60" height="60" />
             </Navbar.Brand>
           </LinkContainer>
 
@@ -159,6 +159,11 @@ export default function Header() {
 
                   <LinkContainer to="/admin/notifications">
                     <NavDropdown.Item>Notifications</NavDropdown.Item>
+                  </LinkContainer>
+
+                  
+                  <LinkContainer to="/admin/systemSetting">
+                    <NavDropdown.Item>System Settings</NavDropdown.Item>
                   </LinkContainer>
 {/* 
 

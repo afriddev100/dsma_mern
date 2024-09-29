@@ -39,7 +39,7 @@ function TrainingPackageDetails() {
   return (
     <>
       <Container>
-        <Link className="btn btn-light my-3" to="/packageDetails">
+        <Link className="btn btn-light my-3" to="/packageList">
           Go Back
         </Link>
         {isLoading ? (

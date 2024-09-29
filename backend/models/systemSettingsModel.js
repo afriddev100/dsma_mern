@@ -1,29 +1,8 @@
 import mongoose from "mongoose";
 
 const systemSettingsSchema= new mongoose.Schema({
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:"User"
-    },
 
     systemName:{
-        type:String,
-        required:true
-
-    },
-    
-    systemShortName:{
-        type:String,
-        required:true
-
-    },
-    welcomeContent:{
-        type:String,
-        required:true
-
-    },
-    aboutUs:{
         type:String,
         required:true
 
@@ -32,9 +11,21 @@ const systemSettingsSchema= new mongoose.Schema({
         type:String,
         required:false
     },
-    coverImage:{
+    
+    systemShortName:{
         type:String,
         required:false
+
+    },
+    welcomeContent:{
+        type:String,
+        required:false
+
+    },
+    aboutUs:{
+        type:String,
+        required:false
+
     },
     email:{
         type:String,
